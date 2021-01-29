@@ -10,4 +10,31 @@ func main() {
 	//
 	//By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms
 
+	currentNum := 1
+	lastNum := 0
+	sequenceCount := 10000
+	var fibSequence []int
+
+	for i := 0; i < sequenceCount; i++ {
+		if i < 2 {
+			fibSequence = append(fibSequence, i)
+			continue
+		}
+
+		//Calculate next number in sequence
+		nextNumber := addEmUp(lastNum, currentNum)
+		//Append next number to sequence
+		fibSequence = append(fibSequence, nextNumber)
+		//Change value of last number
+		lastNum = currentNum
+		//Change value of current number
+		currentNum = nextNumber
+	}
+
+	fmt.Println(fibSequence)
+
+}
+
+func addEmUp(number1 int, number2 int) int {
+	return number1 + number2
 }
